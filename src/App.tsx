@@ -1,12 +1,10 @@
-// eslint-disable-next-line no-use-before-define
 import React from 'react';
+import InitialPage from './pages/Initial/index';
 
-function App() {
-  return (
-    <div className="App">
-      Hello World
-    </div>
-  );
-}
+const App: React.FC = () => (
+  <>
+    <InitialPage />
+  </>
+);
 
 export default App;
