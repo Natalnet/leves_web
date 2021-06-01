@@ -26,10 +26,7 @@
   ],
   "rules": {
     "prettier/prettier": [
-      "error", 
-      {
-        "endOfLine": "auto"
-      }
+      "error"
     ],
     "react-hooks/rules-of-hooks": "error",
     "no-use-before-define": "off",
