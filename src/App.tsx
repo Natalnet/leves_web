@@ -1,9 +1,12 @@
 import React from 'react';
-import InitialPage from './pages/Initial/index';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes';
 
 const App: React.FC = () => (
   <>
-    <InitialPage />
+    <BrowserRouter>
+      <Routes /> {/* Os componentes são chamados no arquivo de rotas */}
+    </BrowserRouter>
   </>
 );
 
