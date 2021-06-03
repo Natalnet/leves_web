@@ -29,13 +29,13 @@ Após a instalação dos pré requisitos a sequência de comandos para inicializ
 * yarn (para instalação dos pacotes no node_modules)
 * yarn dev (para liberar a porta para escutar novas atualizações)
 ### Features
-- [] Página Inicial
-- [] Página de Login
-- [] Página de Cadastro
-- [] Integração com o Backend
-- [] Página de Análise
-- [] Tratamento de erros comuns
-- [] Deploy no Heroku
+- [ ] Página Inicial
+- [ ] Página de Login
+- [ ] Página de Cadastro
+- [ ] Integração com o Backend
+- [ ] Página de Análise
+- [ ] Tratamento de erros comuns
+- [ ] Deploy no Heroku
 ### Conhecimentos Gerais
 #### Métodos HTTP
   Esses métodos serão usados para comunicação com o Backend utilizando a biblioteca axios, existem outros, mas esses são os principais:
