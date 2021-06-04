@@ -20,7 +20,7 @@
 Podemos inicializar a aplicação depois de ter os seguintes pré requisitos instalados na nossa máquina:
 #### Pré Requisitos
 - [Axios](https://blog.rocketseat.com.br/axios-um-cliente-http-full-stack/)
-- [Material-ui]([https://](https://material-ui.com/pt/getting-started/usage/))
+- [Material-ui](https://https://material-ui.com/pt/getting-started/usage/)
 - [Node.js](https://nodejs.org/en/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
