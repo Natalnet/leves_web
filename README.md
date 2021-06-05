@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Projeto datascience na saúde
+## Código Frontend desenvolvido com ReactJS.
+* Como inicializar a Aplicação
+  * Pré Requisitos
+  * Comando de inicialização
+* Features
+* Conhecimentos Gerais
+  * Métodos HTTP
+      * Get
+      * Post
+      * Put
+      * Patch
+      * Delete
+  * Tipos de Parâmetros
+      * Query Params
+      * Route Params
+      * Request Body
+  
+### Como inicializar a Aplicação
+Podemos inicializar a aplicação depois de ter os seguintes pré requisitos instalados na nossa máquina:
+#### Pré Requisitos
+- [Axios](https://blog.rocketseat.com.br/axios-um-cliente-http-full-stack/)
+- [Material-ui](https://https://material-ui.com/pt/getting-started/usage/)
+- [Node.js](https://nodejs.org/en/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
+#### Comandos de inicialização
+Após a instalação dos pré requisitos a sequência de comandos para inicialização é:
+* yarn (para instalação dos pacotes no node_modules)
+* yarn dev (para liberar a porta para escutar novas atualizações)
+### Features
+- [ ] Página de Login
+- [ ] Página Inicial
+- [ ] Página de Cadastro
+- [ ] Integração com o Backend
+- [ ] Página de Análise
+- [ ] Tratamento de erros comuns
+- [ ] Deploy no Heroku
+### Conhecimentos Gerais
+#### Métodos HTTP
+  Esses métodos serão usados para comunicação com o Backend utilizando a biblioteca axios, existem outros, mas esses são os principais:
+  ##### Get
+  O método Get é utilizado quando queremos buscar informações. É ele quem faz as consultas no banco de dados e geralmente é ele que é o primeiro a ser executado quando entramos em uma nova página via navegador. Ele passa as informações via Cabeçalho, e por isso não é recomendado para inserções no banco de dados.
+  ##### Post
+  O método Post é o método de Inserção, usamos ele quando queremos criar uma informação no backend. Esse método passa os dados e informações via corpo da requisição. É a forma mais segura de passar senhas quando estamos criando um novo usuário.
+  ##### Put
+  O método Put é bastante utilizado para alterar dados já criados no backend. Também passa as informações via corpo da requisição.
+  Utilizamos uma estrutura: /nomedarota/numerodoid para essas alterações.
+  ##### Patch
+  O método Patch também é utilizado para alterar dados já criados no backend, a diferença entre ele e o put é que o patch é utilizado para alterar algo específico e o put para alterar todos os dados. Também passa as informações via corpo da requisição.
+  Utilizamos uma estrutura: /nomedarota/numerodoid para essas alterações.
+  ##### Delete
+  O método Delete como o nome já diz é utilizado para apagar dados criados no backend, geralmente utilizamos a estrutura /nomedarota/numerodoid para apagar algum dado.
+  #### Tipos de Parâmetros
+  Os parâmetros são aqueles dados passados via url (quando usado com o Método Get) ou body (com o método post).
+  ##### Query Params
+  Os Query Params são parâmetros passados via url no geral para Filtros e paginação. Sua estrutura fica:
+  /nomedarota?query=filtro&outroquery=filtro
+  ##### Route Params
+  Os Route Params são parâmetros de identificação de recursos para atualizar a base de dados (Atualizar/Deletar). Também é passado via url e sua estrutura fica:
+  /nomedarota/:id
+  ##### Request body
+  É o parâmetro que é utilizado na hora de criar ou atualizar a base de dados, juntamente com os métodos Post, Put ou Patch. É passado em formato json. Por padrão o Express não reconhece o Json, então adicionamos uma linha para essa leitura.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h4 align="center">
+	🚧  ReactJS 🚀 Em construção...  🚧
+</h4>

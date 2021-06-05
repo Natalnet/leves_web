@@ -1,0 +1,64 @@
+/* Tive que criar esse css para alterar os componentes com as classes deles */
+
+/* Esse primeiro é do fundo do Dialog, estava vindo cinza */
+.MuiBackdrop-root {
+  background-color: transparent !important;
+}
+/* Esse foi para dar formato ao dialog */
+.MuiPaper-root {
+  padding: 1em;
+  width: 385px;
+  height: 210px;
+  box-shadow: -6px 6px 4px #ffffff !important;
+  border-radius: 32px !important;
+  color: #ffffff;
+  background-color: #00a8f5 !important;
+}
+/* Essa sequência é para deixar um pouco "responsivo" */
+.MuiDialog-scrollPaper {
+  position: relative;
+  top: 4em;
+  right: 16em;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+}
+@media screen and (max-device-width: 600px) {
+  .MuiDialog-scrollPaper {
+    position: relative;
+    top: 4.2em;
+    left: 0em;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+  }
+}
+@media screen and (max-device-width: 1535px) and (min-device-width: 601px) {
+  .MuiDialog-scrollPaper {
+    position: relative;
+    top: 4.2em;
+    right: 5em;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+  }
+}
+@media screen and (max-device-width: 1900px) and (min-device-width: 1536px) {
+  .MuiDialog-scrollPaper {
+    position: relative;
+    top: 4.2em;
+    right: 16em;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+  }
+}
+/* Esse é para mudar as cores padrão do formulário */
+.MuiInputBase-root,
+.MuiFormLabel-root,
+.MuiIconButton-root {
+  color: white !important;
+}
+/* Esses dois foram para mudar o underline do formulário */
+.MuiInput-underline:before {
+  border-bottom: 2px solid #fff !important;
+}
+.MuiInput-underline:after {
+  border-bottom: 2px solid #EFEFEF !important;
+}
