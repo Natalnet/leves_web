@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Rectangle = styled.div`
-  width: 19em;
-  height: 6em;
+  width: 18em;
+  height: 4em;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -13,11 +14,11 @@ export const Rectangle = styled.div`
 
   .link {
     color: #5f5f5f;
-    font-size: 1.2em;
-  }
-
-  .link:hover {
-    color: #424141;
+    font-size: 1em;
+    transition: color 0.2s;
+    &:hover {
+      color: ${shade(0.7, '#5f5f5f')};
+    }
   }
 
   .MuiButton-root {
@@ -31,11 +32,37 @@ export const Rectangle = styled.div`
     align-items: center;
     width: 7em;
     height: 2em;
-    font-size: 1.2em;
+    font-size: 1em;
     text-transform: none;
+    transition: border-color 0.2s, color 0.2s;
+    &:hover {
+      border: 0.125em solid ${shade(0.3, '#00adfa')};
+      color: ${shade(0.4, '#00adfa')};
+    }
   }
-  .MuiButton-root:hover {
-    border: 0.125em solid #007fc0;
-    color: #007fc0;
+`;
+
+export const ContentLogin = styled.div`
+  a {
+    transition: color 0.2s;
+    margin-top: 1.5em;
+    &:hover {
+      color: ${shade(0.1, '#fff')};
+    }
+  }
+  .MuiButton-root {
+    font-weight: 500;
+    width: 6em;
+    height: 1.5em;
+    margin-top: 2em;
+    border-radius: 0.56em;
+    color: #000;
+    text-transform: none;
+    font-size: 1em;
+    transition: background-color 0.2s, color 0.2s;
+    &:hover {
+      background-color: ${shade(0.2, '#FFFFFF')};
+      color: ${shade(0.3, '#000')};
+    }
   }
 `;

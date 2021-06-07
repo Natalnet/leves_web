@@ -29,9 +29,9 @@ Após a instalação dos pré requisitos a sequência de comandos para inicializ
 * yarn (para instalação dos pacotes no node_modules)
 * yarn dev (para liberar a porta para escutar novas atualizações)
 ### Features
-- [ ] Página de Login
+- [x] Página de Login
+- [x] Página de Cadastro
 - [ ] Página Inicial
-- [ ] Página de Cadastro
 - [ ] Integração com o Backend
 - [ ] Página de Análise
 - [ ] Tratamento de erros comuns
