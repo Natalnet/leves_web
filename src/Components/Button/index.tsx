@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { ContentButton } from './style';
 
@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
-const Buttons: React.FC<Props> = ({ text }) => {
+const Buttons: React.FC<Props> = ({ type, text }) => {
   const classes = useStyles();
   return (
     <ContentButton>
-      <Button type="submit" variant="contained" className={classes.button}>
+      <Button type={type} variant="contained" className={classes.button}>
         {text}
       </Button>
     </ContentButton>

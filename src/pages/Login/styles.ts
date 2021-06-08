@@ -15,9 +15,9 @@ export const Rectangle = styled.div`
   .link {
     color: #5f5f5f;
     font-size: 1em;
-    transition: color 0.2s;
+    transition: color 0.1s;
     &:hover {
-      color: ${shade(0.7, '#5f5f5f')};
+      color: ${shade(1, '#5f5f5f')};
     }
   }
 
@@ -30,8 +30,8 @@ export const Rectangle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7em;
-    height: 2em;
+    width: 6.5em;
+    height: 1.5em;
     font-size: 1em;
     text-transform: none;
     transition: border-color 0.2s, color 0.2s;

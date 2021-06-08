@@ -14,4 +14,9 @@ export const ContentText = styled.div`
   .MuiInput-underline:after {
     border-bottom: 2px solid ${shade(0.15, '#fff')} !important;
   }
+  @media screen and (max-device-width: 320px) {
+    .MuiFormControl-root {
+      width: 15em;
+    }
+  }
 `;

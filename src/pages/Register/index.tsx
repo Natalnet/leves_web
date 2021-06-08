@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { Form } from '@unform/web';
 import TextField from '../../Components/TextField';
 import LogoUfrn from '../../Components/LogoUfrn';
 import Button from '../../Components/Button';
@@ -8,25 +9,13 @@ import PasswordField from '../../Components/PasswordField';
 import { Background, Container, Content } from './styles';
 import Points from '../../assets/points.png';
 
-interface State {
-  login: string;
-  loginConfirmation: string;
-  password: string;
-  passwordConfirmation: string;
-}
 const Register: React.FC = () => {
-  // Pegando os dados do formulário
-  const [values, setValues] = React.useState<State>({
-    login: '',
-    loginConfirmation: '',
-    password: '',
-    passwordConfirmation: '',
-  });
-  // A cada mudança atualizar o estado dos valores
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const handleSubmit = (data: object) => {
+    // eslint-disable-next-line no-console
+    console.log(data);
+  };
   return (
     <Container>
       <Background>
@@ -38,31 +27,23 @@ const Register: React.FC = () => {
           <h2>Crie sua conta </h2>
         </div>
         <Grid container direction="row" justify="center" alignItems="center">
-          <form>
+          <Form onSubmit={handleSubmit}>
+            <TextField name="email" label="Digite seu email" width="24em" />
             <TextField
-              label="Digite seu email"
-              width="24em"
-              login={values.login}
-              handleChange={handleChange('login')}
-            />
-            <TextField
+              name="emailConfirmation"
               label="Confirme seu email"
               width="24em"
-              login={values.loginConfirmation}
-              handleChange={handleChange('loginConfirmation')}
             />
             <PasswordField
+              name="password"
               className="password1"
               label="Escolha uma senha"
               width="24em"
-              password={values.password}
-              handleChange={handleChange('password')}
             />
             <PasswordField
+              name="passwordConfirmation"
               label="Confirme sua senha"
               width="24em"
-              password={values.passwordConfirmation}
-              handleChange={handleChange('passwordConfirmation')}
             />
             <Grid
               container
@@ -74,9 +55,9 @@ const Register: React.FC = () => {
               <Link to="/login">
                 <Button text="Voltar" />
               </Link>
-              <Button text="Concluir" />
+              <Button type="submit" text="Concluir" />
             </Grid>
-          </form>
+          </Form>
         </Grid>
       </Content>
       <LogoUfrn />

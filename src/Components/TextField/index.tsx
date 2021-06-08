@@ -7,16 +7,16 @@ import {
 } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
+import { useField } from '@unform/core';
 import { ContentText } from './style';
 
 interface Props {
-  login: string;
+  name: string;
   label: string;
   width: string;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextFields: React.FC<Props> = ({ login, label, width, handleChange }) => {
+const TextFields: React.FC<Props> = ({ name, label, width }) => {
   const useStyles = makeStyles(() =>
     createStyles({
       textField: {
@@ -25,17 +25,23 @@ const TextFields: React.FC<Props> = ({ login, label, width, handleChange }) => {
     }),
   );
   const classes = useStyles();
+  const inputRef = React.useRef();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { fieldName, defaultValue, error, registerField } = useField(name);
+
+  React.useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef.current,
+      path: 'value',
+    });
+  }, [fieldName, registerField]);
+  console.log(inputRef.current);
   return (
     <ContentText>
       <Grid container direction="row" justify="center" alignItems="center">
         <FormControl className={clsx(classes.textField)}>
-          <TextField
-            label={label}
-            multiline
-            rowsMax={4}
-            value={login}
-            onChange={handleChange}
-          />
+          <TextField inputRef={inputRef} label={label} multiline rowsMax={4} />
         </FormControl>
       </Grid>
     </ContentText>

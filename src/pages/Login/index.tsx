@@ -10,7 +10,7 @@ import {
   makeStyles,
   Theme,
 } from '@material-ui/core';
-
+import { Form } from '@unform/web';
 import Frase from '../../Components/Frase';
 import LogoUfrn from '../../Components/LogoUfrn';
 import TextField from '../../Components/TextField';
@@ -40,16 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-interface State {
-  login: string;
-  password: string;
-}
 const Login: React.FC = () => {
-  // Pegando os dados do formulário
-  const [values, setValues] = React.useState<State>({
-    login: '',
-    password: '',
-  });
   // Operador do Dialog
   const [open, setOpen] = React.useState(false);
   // Para usar o css do Material-ui
@@ -59,18 +50,16 @@ const Login: React.FC = () => {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  // A cada mudança atualizar o estado dos valores
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
   // Fechar o Dialog
   const handleClose = () => {
     setOpen(false);
   };
   // Para enviar para a api
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const handleSubmit = () => {};
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const handleSubmit = (data: object) => {
+    // eslint-disable-next-line no-console
+    console.log(data);
+  };
   return (
     <Container maxWidth="xl">
       {/* Container é um componente responsivo do material ui */}
@@ -91,7 +80,7 @@ const Login: React.FC = () => {
           {/* Componente do material ui para botão, não é necessário 
           redirecionar para outro link, precisa abrir um dialog com 
           fundo transparente. */}
-          <Button onClick={handleClickOpen}>Entrar</Button>
+          <Button onClick={handleClickOpen}>Login</Button>
         </Rectangle>
       </Grid>
       <Grid
@@ -107,25 +96,15 @@ const Login: React.FC = () => {
           aria-describedby="alert-dialog-description"
         >
           <ContentLogin>
-            <form>
+            <Form onSubmit={handleSubmit}>
               <Grid
                 container
                 direction="row"
                 justify="space-around"
                 alignItems="center"
               >
-                <TextField
-                  label="Login"
-                  width="18em"
-                  handleChange={handleChange('login')}
-                  login={values.login}
-                />
-                <PasswordField
-                  label="Senha"
-                  width="18em"
-                  handleChange={handleChange('password')}
-                  password={values.password}
-                />
+                <TextField name="email" label="Email" width="18em" />
+                <PasswordField name="password" label="Senha" width="18em" />
                 <Link to="/" className={classes.link}>
                   Recuperar senha
                 </Link>
@@ -133,12 +112,11 @@ const Login: React.FC = () => {
                   type="submit"
                   variant="contained"
                   className={classes.button}
-                  onClick={handleSubmit}
                 >
                   Entrar
                 </Button>
               </Grid>
-            </form>
+            </Form>
           </ContentLogin>
         </Dialog>
       </Grid>
