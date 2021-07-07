@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {
   createStyles,
   FormControl,
+  FormHelperText,
   Grid,
   IconButton,
   Input,
@@ -34,8 +35,7 @@ const PasswordField: React.FC<Props> = ({ name, className, label, width }) => {
   // Para usar o css do Material-ui
   const classes = useStyles();
   const inputRef = React.useRef(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { fieldName, defaultValue, error, registerField } = useField(name);
+  const { fieldName, error, registerField } = useField(name);
 
   React.useEffect(() => {
     registerField({
@@ -52,14 +52,17 @@ const PasswordField: React.FC<Props> = ({ name, className, label, width }) => {
   return (
     <ContentPassword className={className || ''}>
       <Grid container direction="row" justify="center" alignItems="center">
-        <FormControl className={clsx(classes.textField)}>
-          <InputLabel htmlFor="standard-adornment-password">{label}</InputLabel>
+        <FormControl className={clsx(classes.textField)} error={!!error}>
+          <InputLabel error={!!error} htmlFor="standard-adornment-password">
+            {label}
+          </InputLabel>
           <Input
             inputRef={inputRef}
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
+                  className={error ? 'error' : ''}
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                 >
@@ -68,6 +71,7 @@ const PasswordField: React.FC<Props> = ({ name, className, label, width }) => {
               </InputAdornment>
             }
           />
+          <FormHelperText id="component-error-text">{error}</FormHelperText>
         </FormControl>
       </Grid>
     </ContentPassword>

@@ -8,7 +8,8 @@
 .MuiPaper-root {
   padding: 1em;
   width: 22em;
-  height: 12em;
+  min-height: 13em;
+  max-height: 14.8em;
   box-shadow: -6px 6px 4px #ffffff !important;
   border-radius: 32px !important;
   background-color: #00a8f5 !important;
@@ -53,4 +54,3 @@
     align-items: flex-start !important;
   }
 }
-

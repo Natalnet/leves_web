@@ -10,7 +10,10 @@ import {
   makeStyles,
   Theme,
 } from '@material-ui/core';
+// import { Color } from '@material-ui/lab';
+import * as Yup from 'yup';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 import Frase from '../../Components/Frase';
 import LogoUfrn from '../../Components/LogoUfrn';
 import TextField from '../../Components/TextField';
@@ -20,6 +23,9 @@ import { Rectangle, ContentLogin } from './styles';
 import './style.css';
 import frase from '../../assets/frase.png';
 import logoLeves from '../../assets/logoleves.png';
+import getValidationErrors from '../../utils/getValidationErrors';
+import { useAuth } from '../../hooks/AuthContext';
+import { useToast } from '../../hooks/ToastContext';
 
 // Os componentes vinham com um css já construído.
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,12 +46,24 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
+// interface ToastContainerProps {
+//   type: Color | undefined;
+//   title: string;
+//   description: string;
+// }
 const Login: React.FC = () => {
+  const formRef = React.useRef<FormHandles>(null);
   // Operador do Dialog
   const [open, setOpen] = React.useState(false);
   // Para usar o css do Material-ui
   const classes = useStyles();
-
+  const { signIn } = useAuth();
+  const { addToast } = useToast();
   // Para abrir o Dialog
   const handleClickOpen = () => {
     setOpen(true);
@@ -55,11 +73,38 @@ const Login: React.FC = () => {
     setOpen(false);
   };
   // Para enviar para a api
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  const handleSubmit = (data: object) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-  };
+  const handleSubmit = React.useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('Email é Obrigatório')
+            .email('Deve ser um email válido'),
+          password: Yup.string().min(6, 'Mínimo 6 dígitos'),
+        });
+        await schema.validate(data, { abortEarly: false });
+        await signIn({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+        } else {
+          addToast({
+            type: 'error',
+            title: 'Erro durante o login',
+            description:
+              'Houve um problema de autenticação, cheque suas credenciais.',
+          });
+        }
+      }
+    },
+    [signIn, addToast],
+  );
+
   return (
     <Container maxWidth="xl">
       {/* Container é um componente responsivo do material ui */}
@@ -96,7 +141,7 @@ const Login: React.FC = () => {
           aria-describedby="alert-dialog-description"
         >
           <ContentLogin>
-            <Form onSubmit={handleSubmit}>
+            <Form ref={formRef} onSubmit={handleSubmit}>
               <Grid
                 container
                 direction="row"

@@ -1,6 +1,7 @@
 import {
   createStyles,
   FormControl,
+  FormHelperText,
   Grid,
   makeStyles,
   TextField,
@@ -27,7 +28,7 @@ const TextFields: React.FC<Props> = ({ name, label, width }) => {
   const classes = useStyles();
   const inputRef = React.useRef();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { fieldName, defaultValue, error, registerField } = useField(name);
+  const { fieldName, error, registerField } = useField(name);
 
   React.useEffect(() => {
     registerField({
@@ -36,12 +37,18 @@ const TextFields: React.FC<Props> = ({ name, label, width }) => {
       path: 'value',
     });
   }, [fieldName, registerField]);
-  console.log(inputRef.current);
   return (
     <ContentText>
       <Grid container direction="row" justify="center" alignItems="center">
         <FormControl className={clsx(classes.textField)}>
-          <TextField inputRef={inputRef} label={label} multiline rowsMax={4} />
+          <TextField
+            error={!!error}
+            inputRef={inputRef}
+            label={label}
+            multiline
+            rowsMax={4}
+          />
+          <FormHelperText id="component-error-text">{error}</FormHelperText>
         </FormControl>
       </Grid>
     </ContentText>
