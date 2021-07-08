@@ -27,7 +27,7 @@ Podemos inicializar a aplicação depois de ter os seguintes pré requisitos ins
 #### Comandos de inicialização
 Após a instalação dos pré requisitos a sequência de comandos para inicialização é:
 * yarn (para instalação dos pacotes no node_modules)
-* yarn dev (para liberar a porta para escutar novas atualizações)
+* yarn start (para inicializar o react na porta padrão 3000)
 ### Features
 - [x] Página de Login
 - [x] Página de Cadastro
