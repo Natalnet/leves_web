@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { AlertTitle } from '@material-ui/lab';
 import { ToastMessage, useToast } from '../../../hooks/ToastContext';
+import { Container, ColorAlert } from './styles';
 
 interface ToastContainerProps {
   message: ToastMessage;
@@ -17,16 +18,16 @@ const Toast: React.FC<ToastContainerProps> = ({ message }) => {
     };
   }, [removeToast, message]);
   return (
-    <>
-      <Alert
+    <Container>
+      <ColorAlert
         key={message.id}
         severity={message.type}
         onClose={() => removeToast(message.id)}
       >
         <AlertTitle>{message.title}</AlertTitle>
         {message.description}
-      </Alert>
-    </>
+      </ColorAlert>
+    </Container>
   );
 };
 export default Toast;

@@ -7,7 +7,7 @@ const LogoUfrn: React.FC = () => (
     container
     direction="row"
     className="Grid-LogoUfrn"
-    justify="flex-end"
+    justifyContent="flex-end"
     alignItems="flex-end"
   >
     <Box maxWidth={140} minWidth={80} clone>

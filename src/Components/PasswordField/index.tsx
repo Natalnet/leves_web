@@ -51,7 +51,12 @@ const PasswordField: React.FC<Props> = ({ name, className, label, width }) => {
 
   return (
     <ContentPassword className={className || ''}>
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
         <FormControl className={clsx(classes.textField)} error={!!error}>
           <InputLabel error={!!error} htmlFor="standard-adornment-password">
             {label}

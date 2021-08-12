@@ -92,14 +92,14 @@ const Login: React.FC = () => {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
-        } else {
-          addToast({
-            type: 'error',
-            title: 'Erro durante o login',
-            description:
-              'Houve um problema de autenticação, cheque suas credenciais.',
-          });
+          return;
         }
+        addToast({
+          type: 'error',
+          title: 'Erro durante o login',
+          description:
+            'Houve um problema de autenticação, cheque suas credenciais.',
+        });
       }
     },
     [signIn, addToast],
@@ -113,7 +113,7 @@ const Login: React.FC = () => {
       <Grid
         container
         direction="row"
-        justify="flex-end"
+        justifyContent="flex-end"
         alignItems="flex-start"
       >
         <Rectangle>
@@ -131,7 +131,7 @@ const Login: React.FC = () => {
       <Grid
         container
         direction="row"
-        justify="flex-end"
+        justifyContent="flex-end"
         alignItems="flex-start"
       >
         <Dialog
@@ -139,13 +139,14 @@ const Login: React.FC = () => {
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          className="login"
         >
           <ContentLogin>
             <Form ref={formRef} onSubmit={handleSubmit}>
               <Grid
                 container
                 direction="row"
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
               >
                 <TextField name="email" label="Email" width="18em" />
@@ -165,7 +166,12 @@ const Login: React.FC = () => {
           </ContentLogin>
         </Dialog>
       </Grid>
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
         {/* Box é um componente coringa para deixar as tags com uma 
         cara mais responsiva, utilizei para resolver um problema que estava
         tendo com responsividade. */}

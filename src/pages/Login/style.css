@@ -5,7 +5,7 @@
   background-color: transparent !important;
 }
 /* Esse foi para dar formato ao dialog */
-.MuiPaper-root {
+.login .MuiPaper-root {
   padding: 1em;
   width: 22em;
   min-height: 13em;

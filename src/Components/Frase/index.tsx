@@ -6,7 +6,7 @@ interface ImgProps extends ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
 }
 const Frase: React.FC<ImgProps> = ({ src, alt }) => (
-  <Grid container direction="row" justify="center" alignItems="center">
+  <Grid container direction="row" justifyContent="center" alignItems="center">
     <Box width="100%" maxWidth={1200} minWidth={360} clone>
       <img src={src} alt={alt} />
     </Box>

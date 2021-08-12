@@ -39,14 +39,19 @@ const TextFields: React.FC<Props> = ({ name, label, width }) => {
   }, [fieldName, registerField]);
   return (
     <ContentText>
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
         <FormControl className={clsx(classes.textField)}>
           <TextField
             error={!!error}
             inputRef={inputRef}
             label={label}
             multiline
-            rowsMax={4}
+            maxRows={4}
           />
           <FormHelperText id="component-error-text">{error}</FormHelperText>
         </FormControl>
