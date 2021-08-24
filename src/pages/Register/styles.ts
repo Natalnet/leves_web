@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import LogoLeves from '../../assets/logoleves.png';
 // import { shade } from 'polished';
 
@@ -42,6 +42,20 @@ export const Content = styled.div`
       width: 20em;
     }
   }
+`;
+
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+export const AnimationContainer = styled.div`
+  animation: ${appearFromRight} 1s;
 `;
 
 export const Background = styled.div`

@@ -3,6 +3,7 @@
 * Como inicializar a Aplicação
   * Pré Requisitos
   * Comando de inicialização
+  * Link do projeto no netflify
 * Features
 * Conhecimentos Gerais
   * Métodos HTTP
@@ -28,14 +29,16 @@ Podemos inicializar a aplicação depois de ter os seguintes pré requisitos ins
 Após a instalação dos pré requisitos a sequência de comandos para inicialização é:
 * yarn (para instalação dos pacotes no node_modules)
 * yarn start (para inicializar o react na porta padrão 3000)
+#### Link do projeto no Netlify
+* https://leves.netlify.app/
 ### Features
 - [x] Página de Login
 - [x] Página de Cadastro
 - [ ] Página Inicial
-- [ ] Integração com o Backend
+- [x] Integração com o Backend
 - [ ] Página de Análise
-- [ ] Tratamento de erros comuns
-- [ ] Deploy no Heroku
+- [x] Tratamento de erros comuns
+- [x] Deploy no Netlify
 ### Conhecimentos Gerais
 #### Métodos HTTP
   Esses métodos serão usados para comunicação com o Backend utilizando a biblioteca axios, existem outros, mas esses são os principais:

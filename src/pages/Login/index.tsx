@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -18,7 +18,7 @@ import Frase from '../../Components/Frase';
 import LogoUfrn from '../../Components/LogoUfrn';
 import TextField from '../../Components/TextField';
 import PasswordField from '../../Components/PasswordField';
-import { Rectangle, ContentLogin } from './styles';
+import { Rectangle, ContentLogin, AnimationContainerTop } from './styles';
 
 import './style.css';
 import frase from '../../assets/frase.png';
@@ -64,6 +64,7 @@ const Login: React.FC = () => {
   const classes = useStyles();
   const { signIn } = useAuth();
   const { addToast } = useToast();
+  const history = useHistory();
   // Para abrir o Dialog
   const handleClickOpen = () => {
     setOpen(true);
@@ -88,6 +89,7 @@ const Login: React.FC = () => {
           email: data.email,
           password: data.password,
         });
+        history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -102,7 +104,7 @@ const Login: React.FC = () => {
         });
       }
     },
-    [signIn, addToast],
+    [signIn, addToast, history],
   );
 
   return (
@@ -166,20 +168,22 @@ const Login: React.FC = () => {
           </ContentLogin>
         </Dialog>
       </Grid>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-      >
-        {/* Box é um componente coringa para deixar as tags com uma 
+      <AnimationContainerTop>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {/* Box é um componente coringa para deixar as tags com uma 
         cara mais responsiva, utilizei para resolver um problema que estava
-        tendo com responsividade. */}
-        <Box width="100%" maxWidth={400} minWidth={336} clone>
-          <img src={logoLeves} alt="logo leves" />
-        </Box>
-      </Grid>
-      <Frase src={frase} alt="frase" />
+      tendo com responsividade. */}
+          <Box width="100%" maxWidth={400} minWidth={336} clone>
+            <img src={logoLeves} alt="logo leves" />
+          </Box>
+        </Grid>
+        <Frase src={frase} alt="frase" />
+      </AnimationContainerTop>
       <LogoUfrn />
     </Container>
   );

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 export const Rectangle = styled.div`
@@ -65,4 +65,18 @@ export const ContentLogin = styled.div`
       color: ${shade(0.3, '#000')};
     }
   }
+`;
+
+const appearFromTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+export const AnimationContainerTop = styled.div`
+  animation: ${appearFromTop} 1s;
 `;

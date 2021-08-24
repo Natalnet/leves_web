@@ -45,9 +45,9 @@ const PasswordField: React.FC<Props> = ({ name, className, label, width }) => {
     });
   }, [fieldName, registerField]);
   // Para o botão de mostrar a senha
-  const handleClickShowPassword = () => {
+  const handleClickShowPassword = React.useCallback(() => {
     setShowPassword(!showPassword);
-  };
+  }, [showPassword]);
 
   return (
     <ContentPassword className={className || ''}>

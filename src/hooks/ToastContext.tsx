@@ -17,16 +17,19 @@ const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 
 const ToastProvider: React.FC = ({ children }) => {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
-  function addToast({ type, title, description }: Omit<ToastMessage, 'id'>) {
-    const id = uuid();
-    const toast = {
-      id,
-      type,
-      title,
-      description,
-    };
-    setMessages((oldMessages) => [...oldMessages, toast]);
-  }
+  const addToast = React.useCallback(
+    ({ type, title, description }: Omit<ToastMessage, 'id'>) => {
+      const id = uuid();
+      const toast = {
+        id,
+        type,
+        title,
+        description,
+      };
+      setMessages((oldMessages) => [...oldMessages, toast]);
+    },
+    [],
+  );
 
   const removeToast = useCallback((id: string) => {
     setMessages((state) => state.filter((message) => message.id !== id));
