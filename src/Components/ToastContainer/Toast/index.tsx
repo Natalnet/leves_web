@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AlertTitle } from '@material-ui/lab';
 import { ToastMessage, useToast } from '../../../hooks/ToastContext';
 import { Container, ColorAlert } from './styles';
@@ -9,14 +9,14 @@ interface ToastContainerProps {
 
 const Toast: React.FC<ToastContainerProps> = ({ message }) => {
   const { removeToast } = useToast();
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      removeToast(message.id);
-    }, 4000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [removeToast, message]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     removeToast(message.id);
+  //   }, 4000);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [removeToast, message]);
   return (
     <Container>
       <ColorAlert

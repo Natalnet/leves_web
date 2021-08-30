@@ -36,8 +36,8 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user });
   }, []);
   const signOut = useCallback(() => {
-    localStorage.remove('@Leves:token');
-    localStorage.remove('@Leves:user');
+    localStorage.removeItem('@Leves:token');
+    localStorage.removeItem('@Leves:user');
     setData({} as AuthState);
   }, []);
   return (
