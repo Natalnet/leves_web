@@ -66,13 +66,13 @@ const Login: React.FC = () => {
   const { addToast } = useToast();
   const history = useHistory();
   // Para abrir o Dialog
-  const handleClickOpen = () => {
+  const handleClickOpen = React.useCallback(() => {
     setOpen(true);
-  };
+  }, []);
   // Fechar o Dialog
-  const handleClose = () => {
+  const handleClose = React.useCallback(() => {
     setOpen(false);
-  };
+  }, []);
   // Para enviar para a api
   const handleSubmit = React.useCallback(
     async (data: SignInFormData) => {
