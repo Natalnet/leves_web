@@ -4,11 +4,15 @@ import Route from './Route';
 import Initial from '../pages/Initial';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Forms from '../pages/Forms';
 
 const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Initial} isPrivate />
+      <Route path="/questionario/1" component={Forms} isPrivate />
+      <Route path="/questionario/2" component={Initial} isPrivate />
+      <Route path="/questionario/3" component={Initial} isPrivate />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
     </Switch>

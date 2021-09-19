@@ -46,7 +46,7 @@ const Home: React.FC = () => {
                 alignItems="center"
                 className={classes.margin}
               >
-                <Link to="/questionario" className={classes.hover}>
+                <Link to="/questionario/1" className={classes.hover}>
                   <img src={tudobem} alt="prancheta" width="200px" />
                 </Link>
               </Grid>
@@ -59,7 +59,7 @@ const Home: React.FC = () => {
                 alignItems="center"
                 className={classes.margin}
               >
-                <Link to="/questionario" className={classes.hover}>
+                <Link to="/questionario/2" className={classes.hover}>
                   <img src={cuide} alt="flor" width="312px" />
                 </Link>
               </Grid>
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
                 alignItems="center"
                 className={classes.margin}
               >
-                <Link to="/questionario" className={classes.hover}>
+                <Link to="/questionario/3" className={classes.hover}>
                   <img src={diario} alt="diario" width="296px" />
                 </Link>
               </Grid>
