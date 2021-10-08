@@ -1,74 +1,104 @@
-import React from 'react';
-import { Divider, Grid } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import Button from '../../Components/Button';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Divider } from '@material-ui/core';
+import TituloForm from '../../Components/Frase/TituloForm';
 import LogoUfrn from '../../Components/LogoUfrn';
-import { Background, Container, Content, AnimationContainer } from './styles';
+import Part1 from './Part1';
+import Part2 from './Part2';
+import Part3 from './Part3';
+import Part4 from './Part4';
+import Part5 from './Part5';
+import Part6 from './Part6';
+import Part7 from './Part7';
+import { Background, Container, Content } from './styles';
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    h1: {
-      marginTop: '1.5em',
-      color: '#FFF',
-      fontSize: '2em',
-      textTransform: 'uppercase',
-      textAlign: 'center',
-    },
-    p: {
-      marginTop: '1em',
-    },
-    a: {
-      textDecoration: 'none',
-    },
-    div: {
-      marginTop: '4em',
-    },
-    text: {
-      marginTop: '4em',
-    },
-  }),
-);
 const Register: React.FC = () => {
   // const history = useHistory();
-  const classes = useStyles();
+  const [page, setPage] = useState(1);
+  const [click, setClick] = useState(false);
+  const changePageLeft = useCallback(() => {
+    setPage(page + 1);
+    setClick(true);
+    sessionStorage.setItem('pageForm1:leves', String(page));
+  }, [page]);
+  const changePageRight = useCallback(() => {
+    setClick(true);
+    setPage(page - 1);
+    sessionStorage.setItem('pageForm1:leves', String(page));
+  }, [page]);
 
+  useEffect(() => {
+    if (
+      page === 1 &&
+      sessionStorage.getItem('pageForm1:leves')?.startsWith('2') &&
+      !click
+    ) {
+      setPage(Number(sessionStorage.getItem('pageForm1:leves')));
+    }
+  }, [page, click]);
   return (
     <>
-      <h1 className={classes.h1}>
-        Vamos embarcar juntos numa jornada rumo ao autoconhecimento?
-      </h1>
+      {page === 1 ? (
+        <TituloForm frase="Vamos embarcar juntos numa jornada rumo ao autoconhecimento?" />
+      ) : (
+        ''
+      )}
+      {page === 2 ? (
+        <TituloForm frase="Vamos começar pensando um pouco no seu trabalho" />
+      ) : (
+        ''
+      )}
+      {page >= 3 ? (
+        <TituloForm frase="Responda as próximas questões com base nas dores e problemas que possam ter lhe incomodado nos últimos 30 dias." />
+      ) : (
+        ''
+      )}
       <Container>
         <Background>
           <Divider orientation="vertical" flexItem />
         </Background>
         <Content>
-          <AnimationContainer>
-            <div className={classes.text}>
-              <p>
-                A seguir você encontrará perguntas que te farão refletir sobre
-                seus próprios sentimentos.
-              </p>
-              <p>
-                É muito importante que você responda com calma e honestidade.
-              </p>
-              <p className={classes.p}>
-                Lembre-se que estamos aqui por você e que seus dados estão
-                seguros conosco!
-              </p>
-            </div>
-            <Grid
-              container
-              direction="row"
-              justifyContent="flex-end"
-              alignItems="center"
-              className={classes.div}
-            >
-              <Link to="/login" className={classes.a}>
-                <Button text="Vamos lá" />
-              </Link>
-            </Grid>
-          </AnimationContainer>
+          {page === 1 ? <Part1 changePageLeft={changePageLeft} /> : ''}
+          {page === 2 ? (
+            <Part2
+              changePageLeft={changePageLeft}
+              changePageRight={changePageRight}
+            />
+          ) : (
+            ''
+          )}
+          {page === 3 ? (
+            <Part3
+              changePageLeft={changePageLeft}
+              changePageRight={changePageRight}
+            />
+          ) : (
+            ''
+          )}
+          {page === 4 ? (
+            <Part4
+              changePageLeft={changePageLeft}
+              changePageRight={changePageRight}
+            />
+          ) : (
+            ''
+          )}
+          {page === 5 ? (
+            <Part5
+              changePageLeft={changePageLeft}
+              changePageRight={changePageRight}
+            />
+          ) : (
+            ''
+          )}
+          {page === 6 ? (
+            <Part6
+              changePageLeft={changePageLeft}
+              changePageRight={changePageRight}
+            />
+          ) : (
+            ''
+          )}
+          {page === 7 ? <Part7 changePageRight={changePageRight} /> : ''}
         </Content>
         <LogoUfrn />
       </Container>
