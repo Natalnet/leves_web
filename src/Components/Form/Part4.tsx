@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Button from '../../Components/Button';
+import Button from '../Button';
 import { AnimationContainer } from './styles';
 
 const useStyles = makeStyles(() =>
@@ -31,7 +31,7 @@ const App: React.FC<Props> = ({ changePageLeft, changePageRight }) => {
       <div className={classes.text}>
         <p>
           A seguir você encontrará perguntas que te farão refletir sobre seus
-          próprios sentimentos. Parte 6!
+          próprios sentimentos. Parte 4!
         </p>
         <p>É muito importante que você responda com calma e honestidade.</p>
         <p className={classes.p}>

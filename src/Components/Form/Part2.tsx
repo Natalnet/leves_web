@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Button from '../../Components/Button';
+import { Form } from '@unform/web';
+import Button from '../Button';
+import TextField from '../TextField';
 import { AnimationContainer } from './styles';
 
 const useStyles = makeStyles(() =>
@@ -26,19 +28,18 @@ interface Props {
 
 const App: React.FC<Props> = ({ changePageLeft, changePageRight }) => {
   const classes = useStyles();
+  const handleSaveForm2 = useCallback((data: unknown) => {
+    localStorage.setItem('data1', String(data));
+  }, []);
   return (
     <AnimationContainer>
-      <div className={classes.text}>
-        <p>
-          A seguir você encontrará perguntas que te farão refletir sobre seus
-          próprios sentimentos. Parte 4!
-        </p>
-        <p>É muito importante que você responda com calma e honestidade.</p>
-        <p className={classes.p}>
-          Lembre-se que estamos aqui por você e que seus dados estão seguros
-          conosco!
-        </p>
-      </div>
+      <Form className={classes.text} onSubmit={handleSaveForm2}>
+        <TextField
+          label="Como você se sente em relação aos seus colegas de trabalho?"
+          name="question"
+          width="250px"
+        />
+      </Form>
       <Grid
         container
         direction="row"

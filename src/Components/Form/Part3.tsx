@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Button from '../../Components/Button';
+import Button from '../Button';
 import { AnimationContainer } from './styles';
 
 const useStyles = makeStyles(() =>

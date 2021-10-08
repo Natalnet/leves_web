@@ -1,14 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Divider } from '@material-ui/core';
-import TituloForm from '../../Components/Frase/TituloForm';
+import TituloEscolhido from '../../Components/Frase/TituloEscolhido';
 import LogoUfrn from '../../Components/LogoUfrn';
-import Part1 from './Part1';
-import Part2 from './Part2';
-import Part3 from './Part3';
-import Part4 from './Part4';
-import Part5 from './Part5';
-import Part6 from './Part6';
-import Part7 from './Part7';
+import Form from '../../Components/Form';
 import { Background, Container, Content } from './styles';
 
 const Register: React.FC = () => {
@@ -37,68 +31,17 @@ const Register: React.FC = () => {
   }, [page, click]);
   return (
     <>
-      {page === 1 ? (
-        <TituloForm frase="Vamos embarcar juntos numa jornada rumo ao autoconhecimento?" />
-      ) : (
-        ''
-      )}
-      {page === 2 ? (
-        <TituloForm frase="Vamos começar pensando um pouco no seu trabalho" />
-      ) : (
-        ''
-      )}
-      {page >= 3 ? (
-        <TituloForm frase="Responda as próximas questões com base nas dores e problemas que possam ter lhe incomodado nos últimos 30 dias." />
-      ) : (
-        ''
-      )}
+      <TituloEscolhido page={page} />
       <Container>
         <Background>
           <Divider orientation="vertical" flexItem />
         </Background>
         <Content>
-          {page === 1 ? <Part1 changePageLeft={changePageLeft} /> : ''}
-          {page === 2 ? (
-            <Part2
-              changePageLeft={changePageLeft}
-              changePageRight={changePageRight}
-            />
-          ) : (
-            ''
-          )}
-          {page === 3 ? (
-            <Part3
-              changePageLeft={changePageLeft}
-              changePageRight={changePageRight}
-            />
-          ) : (
-            ''
-          )}
-          {page === 4 ? (
-            <Part4
-              changePageLeft={changePageLeft}
-              changePageRight={changePageRight}
-            />
-          ) : (
-            ''
-          )}
-          {page === 5 ? (
-            <Part5
-              changePageLeft={changePageLeft}
-              changePageRight={changePageRight}
-            />
-          ) : (
-            ''
-          )}
-          {page === 6 ? (
-            <Part6
-              changePageLeft={changePageLeft}
-              changePageRight={changePageRight}
-            />
-          ) : (
-            ''
-          )}
-          {page === 7 ? <Part7 changePageRight={changePageRight} /> : ''}
+          <Form
+            page={page}
+            changePageLeft={changePageLeft}
+            changePageRight={changePageRight}
+          />
         </Content>
         <LogoUfrn />
       </Container>
