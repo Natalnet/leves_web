@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '../Button';
 import { AnimationContainer } from './styles';
+import RadioButton from '../RadioButton';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -28,15 +29,10 @@ const App: React.FC<Props> = ({ changePageRight }) => {
   return (
     <AnimationContainer>
       <div className={classes.text}>
-        <p>
-          A seguir você encontrará perguntas que te farão refletir sobre seus
-          próprios sentimentos. Parte 7!
-        </p>
-        <p>É muito importante que você responda com calma e honestidade.</p>
-        <p className={classes.p}>
-          Lembre-se que estamos aqui por você e que seus dados estão seguros
-          conosco!
-        </p>
+        <RadioButton question="17- Tem tido ideia de acabar com a vida?" />
+        <RadioButton question="18- Sente-se cansado(a) o tempo todo?" />
+        <RadioButton question="19- Você se cansa com facilidade?" />
+        <RadioButton question="20- Tem sensações desagradáveis no estômago?" />
       </div>
       <Grid
         container
