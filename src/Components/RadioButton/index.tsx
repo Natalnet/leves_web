@@ -59,7 +59,7 @@ const useStyles = makeStyles({
   },
   container: {
     margin: '0px 16px 16px 16px',
-    width: '50%',
+    width: '54%',
   },
   div: {
     display: 'flex',
