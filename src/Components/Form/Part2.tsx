@@ -29,7 +29,6 @@ interface Props {
 const App: React.FC<Props> = ({ changePageLeft, changePageRight }) => {
   const classes = useStyles();
   const handleSaveForm2 = useCallback((data: unknown) => {
-    console.log('teste');
     sessionStorage.setItem('data1', String(data));
   }, []);
   return (
