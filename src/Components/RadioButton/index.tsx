@@ -48,6 +48,7 @@ const useStyles = makeStyles({
   },
   colorLegend: {
     color: '#FAFAFA',
+    margin: '4% 0',
     '&.MuiFormLabel-root.Mui-focused': {
       color: '#FFF',
     },
@@ -59,6 +60,12 @@ const useStyles = makeStyles({
   container: {
     margin: '0px 16px 16px 16px',
     width: '50%',
+  },
+  div: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -83,9 +90,9 @@ interface Props {
 const App: React.FC<Props> = ({ question }) => {
   const classes = useStyles();
   return (
-    <Grid container>
+    <Grid container className={classes.div}>
       <FormControl component="fieldset" className={classes.container}>
-        <FormLabel component="legend" className={classes.colorLegend}>
+        <FormLabel component="p" className={classes.colorLegend}>
           {question}
         </FormLabel>
         <RadioGroup

@@ -14,7 +14,9 @@ const useStyles = makeStyles(() =>
       marginTop: '4em',
     },
     text: {
-      marginTop: '4em',
+      margin: '10% 10%',
+      fontWeight: 600,
+      textAlign: 'center',
     },
   }),
 );

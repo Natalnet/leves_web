@@ -20,8 +20,8 @@ export const Content = styled.div`
   color: #fff;
   margin-left: 4em;
   p {
-    text-align: center;
-    font-size: 1.3em;
+    font-size: 1.2em;
+    font-family: 'Open Sans', sans-serif;
   }
   img {
     margin-left: 5em;

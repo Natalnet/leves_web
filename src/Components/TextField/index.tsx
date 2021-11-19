@@ -27,7 +27,6 @@ const TextFields: React.FC<Props> = ({ name, label, width }) => {
   );
   const classes = useStyles();
   const inputRef = React.useRef();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { fieldName, error, registerField } = useField(name);
 
   React.useEffect(() => {

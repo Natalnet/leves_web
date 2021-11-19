@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Form } from '@unform/web';
 import Button from '../Button';
-import TextField from '../TextField';
+import TextField from '../TextField/TextField';
 import { AnimationContainer } from './styles';
 
 const useStyles = makeStyles(() =>
@@ -29,31 +29,43 @@ interface Props {
 const App: React.FC<Props> = ({ changePageLeft, changePageRight }) => {
   const classes = useStyles();
   const handleSaveForm2 = useCallback((data: unknown) => {
-    localStorage.setItem('data1', String(data));
+    console.log('teste');
+    sessionStorage.setItem('data1', String(data));
   }, []);
   return (
     <AnimationContainer>
       <Form className={classes.text} onSubmit={handleSaveForm2}>
         <TextField
-          label="Como você se sente em relação aos seus colegas de trabalho?"
-          name="question"
-          width="250px"
+          name="question1"
+          question="Como você se sente em relação aos seus colegas de trabalho?"
         />
+        <TextField
+          name="question2"
+          question="Como você se sente em relação ao seu gestor imediato?"
+        />
+        <TextField
+          name="question3"
+          question="Como você se sente em relação às atividades que desempenha?"
+        />
+        <TextField
+          name="question4"
+          question="Como você se sente em relação ao seu salário?"
+        />
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="center"
+          className={classes.div}
+        >
+          <Grid item onClick={changePageRight}>
+            <Button type="button" text="voltar" />
+          </Grid>
+          <Grid item onClick={changePageLeft}>
+            <Button type="submit" text="próximo" />
+          </Grid>
+        </Grid>
       </Form>
-      <Grid
-        container
-        direction="row"
-        justifyContent="flex-end"
-        alignItems="center"
-        className={classes.div}
-      >
-        <Grid item onClick={changePageRight}>
-          <Button type="submit" text="voltar" />
-        </Grid>
-        <Grid item onClick={changePageLeft}>
-          <Button type="button" text="próximo" />
-        </Grid>
-      </Grid>
     </AnimationContainer>
   );
 };
