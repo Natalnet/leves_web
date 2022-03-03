@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { Form } from '@unform/web';
@@ -21,19 +22,34 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-interface Props {
-  changePageLeft: () => void;
-  changePageRight: () => void;
-}
-
-const App: React.FC<Props> = ({ changePageLeft, changePageRight }) => {
+const App: React.FC = () => {
+  const history = useHistory();
   const classes = useStyles();
-  const handleSaveForm2 = useCallback((data: unknown) => {
-    sessionStorage.setItem('data1', String(data));
+  const [values, setValues] = useState({});
+  useEffect(() => {
+    setValues(
+      sessionStorage.getItem('data1')
+        ? JSON.parse(sessionStorage.getItem('data1') as string)
+        : {},
+    );
   }, []);
+  const handleClickLeft = useCallback(() => {
+    history.push('/questionario/1');
+  }, [history]);
+  const handleSaveForm2 = useCallback(
+    (data: unknown) => {
+      sessionStorage.setItem('data1', JSON.stringify(data));
+      history.push('/questionario/3');
+    },
+    [history],
+  );
   return (
     <AnimationContainer>
-      <Form className={classes.text} onSubmit={handleSaveForm2}>
+      <Form
+        initialData={values}
+        className={classes.text}
+        onSubmit={handleSaveForm2}
+      >
         <TextField
           name="question1"
           question="Como você se sente em relação aos seus colegas de trabalho?"
@@ -57,10 +73,10 @@ const App: React.FC<Props> = ({ changePageLeft, changePageRight }) => {
           alignItems="center"
           className={classes.div}
         >
-          <Grid item onClick={changePageRight}>
+          <Grid item onClick={handleClickLeft}>
             <Button type="button" text="voltar" />
           </Grid>
-          <Grid item onClick={changePageLeft}>
+          <Grid item>
             <Button type="submit" text="próximo" />
           </Grid>
         </Grid>

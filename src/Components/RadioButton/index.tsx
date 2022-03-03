@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Radio, { RadioProps } from '@material-ui/core/Radio';
@@ -85,10 +85,28 @@ function StyledRadio(props: RadioProps) {
 }
 interface Props {
   question: string;
+  name: string;
+  radio: {
+    name: string;
+    value: string;
+  };
+  setRadio: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      value: string;
+    }>
+  >;
 }
 
-const App: React.FC<Props> = ({ question }) => {
+const App: React.FC<Props> = ({ question, name, radio, setRadio }) => {
   const classes = useStyles();
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      setRadio({ name, value });
+    },
+    [name, setRadio],
+  );
   return (
     <Grid container className={classes.div}>
       <FormControl component="fieldset" className={classes.container}>
@@ -96,9 +114,10 @@ const App: React.FC<Props> = ({ question }) => {
           {question}
         </FormLabel>
         <RadioGroup
-          defaultValue=""
+          value={radio.value}
           aria-label="question"
-          name="customized-radios"
+          name={name}
+          onChange={handleChange}
           className={classes.groupRadio}
         >
           <FormControlLabel value="sim" control={<StyledRadio />} label="sim" />

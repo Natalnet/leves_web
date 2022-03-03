@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 import Button from '../Button';
 import { AnimationContainer } from './styles';
 
@@ -21,12 +22,14 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-interface Props {
-  changePageLeft: () => void;
-}
-
-const App: React.FC<Props> = ({ changePageLeft }) => {
+const App: React.FC = () => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleClickRight = useCallback(() => {
+    history.push('/questionario/2');
+  }, [history]);
+
   return (
     <AnimationContainer>
       <div className={classes.text}>
@@ -47,7 +50,7 @@ const App: React.FC<Props> = ({ changePageLeft }) => {
         alignItems="center"
         className={classes.div}
       >
-        <Grid item onClick={changePageLeft}>
+        <Grid item onClick={handleClickRight}>
           <Button type="button" text="Vamos lá" />
         </Grid>
       </Grid>

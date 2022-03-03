@@ -51,7 +51,7 @@ const App: React.FC<InputProps> = ({ name, question }) => {
   const inputRef = React.useRef(null);
   const classes = useStyles();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { fieldName, error, registerField } = useField(name);
+  const { fieldName, error, registerField, defaultValue } = useField(name);
 
   React.useEffect(() => {
     registerField({
@@ -68,6 +68,7 @@ const App: React.FC<InputProps> = ({ name, question }) => {
         <img className={classes.img} src={points} alt="points" />
         <input
           ref={inputRef}
+          defaultValue={defaultValue}
           className={classes.input}
           type="text"
           name={name}
