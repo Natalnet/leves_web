@@ -7,7 +7,7 @@ import {
 import { useAuth } from '../hooks/AuthContext';
 
 interface RouteProps extends ReactDOMRouteProps {
-  isPrivate?: boolean | null;
+  isPrivate?: boolean;
   component: React.ComponentType;
 }
 const Route: React.FC<RouteProps> = ({
@@ -33,6 +33,10 @@ const Route: React.FC<RouteProps> = ({
       }}
     />
   );
+};
+
+Route.defaultProps = {
+  isPrivate: false,
 };
 
 export default Route;

@@ -17,7 +17,7 @@ import { ContentPassword } from './style';
 
 interface Props {
   name: string;
-  className?: string | null;
+  className?: string;
   label: string;
   width: string;
 }
@@ -81,6 +81,10 @@ const PasswordField: React.FC<Props> = ({ name, className, label, width }) => {
       </Grid>
     </ContentPassword>
   );
+};
+
+PasswordField.defaultProps = {
+  className: '',
 };
 
 export default PasswordField;
