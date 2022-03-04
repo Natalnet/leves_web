@@ -17,7 +17,7 @@ import { ContentPassword } from './style';
 
 interface Props {
   name: string;
-  className?: string;
+  className?: string | null;
   label: string;
   width: string;
 }
