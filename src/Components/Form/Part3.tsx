@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
@@ -28,20 +28,31 @@ const App: React.FC = () => {
   const [radio4, setRadio4] = useState({ name: '', value: '' });
   const classes = useStyles();
   const history = useHistory();
+
+  useEffect(() => {
+    if (sessionStorage.getItem('data2')) {
+      setRadio1(JSON.parse(sessionStorage.getItem('data2') as string)[0]);
+      setRadio2(JSON.parse(sessionStorage.getItem('data2') as string)[1]);
+      setRadio3(JSON.parse(sessionStorage.getItem('data2') as string)[2]);
+      setRadio4(JSON.parse(sessionStorage.getItem('data2') as string)[3]);
+    }
+  }, []);
   const handleClickLeft = useCallback(() => {
     history.push('/questionario/2');
   }, [history]);
   const handleSubmitRadio = useCallback(
     (event: React.SyntheticEvent) => {
-      console.log(radio1, radio2, radio3, radio4);
       event.preventDefault();
       sessionStorage.setItem(
         'data2',
-        JSON.stringify(`${radio1} \n ${radio2} \n ${radio3} \n ${radio4}`),
+        `[${JSON.stringify(radio1)},
+        ${JSON.stringify(radio2)},
+        ${JSON.stringify(radio3)},
+        ${JSON.stringify(radio4)}]`,
       );
-      // history.push('/questionario/4');
+      history.push('/questionario/4');
     },
-    [radio1, radio2, radio3, radio4],
+    [history, radio1, radio2, radio3, radio4],
   );
   return (
     <AnimationContainer>
